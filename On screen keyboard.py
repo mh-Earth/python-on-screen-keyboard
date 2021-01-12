@@ -20,7 +20,7 @@ def writeMode_On():
     scrollbar = Scrollbar(root)
     scrollbar.pack(side=RIGHT, fill=Y)
 
-    text_area=Text(root,height=25,yscrollcommand = scrollbar.set, width=23,bg="grey10",fg="floral white",font=('comic.ttf',13))
+    text_area=Text(root,height=25,yscrollcommand = scrollbar.set, width=23,bg="grey10",fg="floral white",font=('comic.ttf',13),insertbackground="white")
     text_area.pack(side=RIGHT, fill=X)
     scrollbar.config(command=text_area.yview)
 
