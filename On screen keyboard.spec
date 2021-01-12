@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['On screen keyboard.py'],
-             pathex=['E:\\On-Screen-Keyboard'],
+             pathex=['C:\\Users\\speed\\Desktop\\python-on-screen-keyboard'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='E:\\On-Screen-Keyboard\\icon.ico')
+          console=False , icon='C:\\Users\\speed\\Desktop\\python-on-screen-keyboard\\icon.ico')

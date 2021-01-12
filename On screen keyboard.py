@@ -9,6 +9,7 @@ win_OFF=True
 shiftOFF=True
 ctrlOFF=True
 altOFF=True
+FnOFF=True
 
 writeMode_off=True
 Caps_lockOFF=True
@@ -31,7 +32,7 @@ def writeMode_Off():
 
 
 def pressed(event):
-    global shiftOFF,altOFF,ctrlOFF,win_OFF,writeMode_off,Caps_lockOFF
+    global shiftOFF,altOFF,ctrlOFF,win_OFF,writeMode_off,Caps_lockOFF,FnOFF
     Button_name=event.widget
     try:
         Button_text=Button_name.cget('text')
@@ -88,8 +89,8 @@ def pressed(event):
                 r_alt.config(text="Alt",bg="floral white",fg="grey10")
                 altOFF=False
             elif not altOFF:
-                rctrl.config(text="Alt",fg='palegreen',bg='grey10')
-                lctrl.config(text="Alt",fg='palegreen',bg='grey10')
+                l_alt.config(text="Alt",fg='palegreen',bg='grey10')
+                r_alt.config(text="Alt",fg='palegreen',bg='grey10')
                 altOFF=True
 
         elif Button_text=="ctrl":
@@ -101,6 +102,15 @@ def pressed(event):
                 rctrl.config(text="Ctrl",fg='palegreen',bg='grey10')
                 lctrl.config(text="Ctrl",fg='palegreen',bg='grey10')
                 ctrlOFF=True
+
+        elif Button_text=="fn":
+            if FnOFF:
+                fn_key.config(text="Fn",bg="floral white",fg="grey10")
+                FnOFF=False
+            elif not FnOFF:
+                fn_key.config(text="Fn",fg='palegreen',bg='grey10')
+                FnOFF=True
+                
         elif Button_text=="\u1438":
             pyautogui.press("left")
 
@@ -183,10 +193,21 @@ def pressed(event):
                 keylist.clear()
                 keylist.append('caps lock')
                 keylist.append(Button_text)
-                print(keylist)
                 try:
                     Next_key=keylist[1]
                     pyautogui.hotkey('shift',Next_key)
+                    keylist.clear()
+                except Exception as e:
+                    pass
+
+            elif not FnOFF:
+                keylist.clear()
+                keylist.append('fn')
+                keylist.append(Button_text)
+                try:
+                    Next_key=keylist[1]
+                    pyautogui.hotkey('fn',Next_key)
+                    fn_key.config(text="Fn",fg='palegreen',bg='grey10')
                     keylist.clear()
                 except Exception as e:
                     pass
